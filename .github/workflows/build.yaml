@@ -31,3 +31,7 @@ jobs:
 
       - name: Build and publish Docker image
         run: ./gradlew jib
+
+  deploy:
+    runs-on: ubuntu-latest
+    uses: .github/workflows/deploy.yaml
