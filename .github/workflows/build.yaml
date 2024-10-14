@@ -21,7 +21,6 @@ jobs:
 
       - name: Gradle - Build
         run: |-
-          chmod 600 ./gradlew
           ./gradlew build
 
       - name: Log in to Docker Hub
