@@ -34,4 +34,11 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    uses: ./.github/workflows/deploy.yaml
+
+    steps:
+      name:
+      - name: Check out the repository
+        uses: actions/checkout@v3
+
+      - name: Deploy Bot
+        uses: ./.github/workflows/deploy.yaml
