@@ -59,7 +59,7 @@ jib {
     container {
         jvmFlags = listOf("-Xms256m", "-Xmx512m")
         ports = listOf("8080")
-        mainClass = "com.hebi.ZomboidMonitor"
+        mainClass = "com.hebi.ZomboidCrashMonitor"
         environment = mapOf(
             "DISCORD_BOT_TOKEN" to System.getenv("DISCORD_BOT_TOKEN"),
             "DISCORD_CHANNEL_ID" to System.getenv("DISCORD_CHANNEL_ID"),
