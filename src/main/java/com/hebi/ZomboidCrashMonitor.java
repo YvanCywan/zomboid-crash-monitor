@@ -30,7 +30,7 @@ public class ZomboidCrashMonitor {
                 monitorService(config.getZomboidServerServiceName());
 
                 // Sleep for 30 seconds (or any other interval you prefer)
-                TimeUnit.SECONDS.sleep(30);
+                TimeUnit.SECONDS.sleep(600);
             } catch (Exception e) {
                 log.error("An error occurred during monitoring", e);
                 discordBot.sendMessage("Error: " + e.getMessage());
