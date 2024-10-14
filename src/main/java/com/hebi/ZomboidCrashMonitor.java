@@ -46,6 +46,8 @@ public class ZomboidCrashMonitor {
         boolean isRunning = processes.stream()
                 .anyMatch(osProcess -> osProcess.getName().contains(serviceName));
 
+        log.info("Processes: {}", processes.stream().map(OSProcess::getName));
+
         if (!isRunning) {
             log.warn("{} is not running. Sending alert...", serviceName);
             discordBot.sendMessage(serviceName + " has stopped or crashed!");
