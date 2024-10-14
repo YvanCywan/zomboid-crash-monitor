@@ -1,5 +1,6 @@
 package com.hebi;
 
+import lombok.extern.slf4j.Slf4j;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
@@ -8,6 +9,7 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import org.jetbrains.annotations.NotNull;
 
+@Slf4j
 public class DiscordBot extends ListenerAdapter {
 
     private final String token;
