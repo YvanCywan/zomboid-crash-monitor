@@ -8,6 +8,21 @@ on:
         required: true
         default: 'false'
   workflow_call:
+    secrets:
+      SERVER_USER:
+        required: true
+      SERVER_PASSWORD:
+        required: true
+      DISCORD_BOT_TOKEN:
+        required: true
+      DISCORD_CHANNEL_ID:
+        required: true
+      ZOMBOID_SERVICE_NAME:
+        required: true
+      DOCKER_USERNAME:
+        required: true
+      DOCKER_PASSWORD:
+        required: true
 
 jobs:
   deploy:
