@@ -51,6 +51,10 @@ jib {
     to {
         image = "hebirura682:zomboid-crash-monitor"
         tags = setOf("latest", "$version")
+        auth {
+            username = System.getenv("DOCKER_USERNAME")
+            password = System.getenv("DOCKER_PASSWORD")
+        }
     }
     container {
         jvmFlags = listOf("-Xms256m", "-Xmx512m")
