@@ -46,7 +46,7 @@ public class ZomboidCrashMonitor {
         boolean isRunning = processes.stream()
                 .anyMatch(osProcess -> osProcess.getName().contains(serviceName));
 
-        System.out.println("Processes: " + processes.stream().map(OSProcess::getName));
+        System.out.println("Processes: " + processes.stream().map(OSProcess::getName).toList());
 
         if (!isRunning) {
             log.warn("{} is not running. Sending alert...", serviceName);
