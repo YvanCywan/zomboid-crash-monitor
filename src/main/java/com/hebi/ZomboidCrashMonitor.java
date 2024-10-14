@@ -1,6 +1,7 @@
 package com.hebi;
 
 import lombok.extern.slf4j.Slf4j;
+import org.freedesktop.dbus.exceptions.DBusException;
 import oshi.SystemInfo;
 import oshi.software.os.OSProcess;
 import oshi.software.os.OperatingSystem;
@@ -13,11 +14,14 @@ public class ZomboidCrashMonitor {
 
     private static final Config config = new Config();
     private static DiscordBot discordBot;
+    private static SystemdInteraction systemdInteraction;
 
     public static void main(String[] args) throws Exception {
         // Initialize and start the Discord bot
         discordBot = new DiscordBot(config.getDiscordBotToken(), config.getDiscordChannelId());
         discordBot.start();
+
+        systemdInteraction = new SystemdInteraction(config.getZomboidServerServiceName());
 
         // Start monitoring
         ZomboidCrashMonitor monitor = new ZomboidCrashMonitor();
@@ -28,7 +32,7 @@ public class ZomboidCrashMonitor {
         while (true) {
             try {
                 monitorService(config.getZomboidServerServiceName());
-
+                systemdInteraction.checkServiceStatus();
                 // Sleep for 30 seconds (or any other interval you prefer)
                 TimeUnit.SECONDS.sleep(600);
             } catch (Exception e) {
@@ -46,13 +50,15 @@ public class ZomboidCrashMonitor {
         boolean isRunning = processes.stream()
                 .anyMatch(osProcess -> osProcess.getName().contains("ProjectZomboid6"));
 
-        System.out.println("Processes: " + processes.stream().map(OSProcess::getName).toList());
-
         if (!isRunning) {
             log.warn("{} is not running. Sending alert...", serviceName);
             discordBot.sendMessage(serviceName + " has stopped or crashed!");
         } else {
             log.info("{} is running normally.", serviceName);
         }
+    }
+
+    private void listSystemdUnits() throws DBusException {
+
     }
 }

@@ -70,7 +70,7 @@ jobs:
             fi
             
             docker pull ${{ secrets.DOCKER_USERNAME }}/zomboid-crash-monitor:latest
-            docker run -d --name zomboid-crash-monitor --pid=host -e DISCORD_BOT_TOKEN=${{ secrets.DISCORD_BOT_TOKEN }} \
+            docker run -d -v /var/run/dbus/system_bus_socket:/var/run/dbus/system_bus_socket --name zomboid-crash-monitor --pid=host -e DISCORD_BOT_TOKEN=${{ secrets.DISCORD_BOT_TOKEN }} \
               -e DISCORD_CHANNEL_ID=${{ secrets.DISCORD_CHANNEL_ID }} \
               -e ZOMBOID_SERVICE_NAME=${{ secrets.ZOMBOID_SERVICE_NAME }} \
               ${{ secrets.DOCKER_USERNAME }}/zomboid-crash-monitor:latest

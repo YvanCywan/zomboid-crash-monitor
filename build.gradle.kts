@@ -16,6 +16,7 @@ dependencies {
     implementation("org.slf4j:slf4j-api:1.7.36")
     implementation("org.slf4j:slf4j-simple:1.7.36")
     implementation("net.dv8tion:JDA:5.1.2")
+    implementation("com.github.hypfvieh:dbus-java:3.2.3")
     compileOnly("org.projectlombok:lombok:1.18.34")
     annotationProcessor("org.projectlombok:lombok:1.18.34")
 
