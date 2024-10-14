@@ -34,4 +34,4 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    uses: .github/workflows/deploy.yaml@main
+    uses: ./.github/workflows/deploy.yaml@main
