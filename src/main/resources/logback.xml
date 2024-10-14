@@ -1,0 +1,15 @@
+<configuration>
+    <!-- Console Appender -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <immediateFlush>true</immediateFlush> <!-- Flush logs immediately -->
+        <encoder>
+            <!-- Log pattern, can be adjusted as needed -->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Root logger to capture all log levels -->
+    <root level="trace"> <!-- Trace level includes all levels (TRACE, DEBUG, INFO, WARN, ERROR) -->
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>
