@@ -17,7 +17,7 @@ public class SystemdInteraction {
     // Check the service status
     public void checkServiceStatus() {
         try {
-            ProcessBuilder builder = new ProcessBuilder("systemctl", "status", serviceName);
+            ProcessBuilder builder = new ProcessBuilder("systemctl", "list-units", "--type=service", "--all");
             Process process = builder.start();
             BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
             String line;
@@ -26,6 +26,7 @@ public class SystemdInteraction {
             }
             process.waitFor();
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             log.error(e.getMessage());
         }
     }
