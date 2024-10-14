@@ -63,6 +63,12 @@ jobs:
           port: 22
           script: |
             # Pull the latest Docker image and run it with the host's PID namespace
+            if [ $(docker ps -q -f name=zomboid-crash-monitor) ]; then
+              echo "Stopping and removing the existing container..."
+              docker stop zomboid-crash-monitor
+              docker rm zomboid-crash-monitor
+            fi
+            
             docker pull ${{ secrets.DOCKER_USERNAME }}/zomboid-crash-monitor:latest
             docker run -d --name zomboid-crash-monitor --pid=host -e DISCORD_BOT_TOKEN=${{ secrets.DISCORD_BOT_TOKEN }} \
               -e DISCORD_CHANNEL_ID=${{ secrets.DISCORD_CHANNEL_ID }} \
