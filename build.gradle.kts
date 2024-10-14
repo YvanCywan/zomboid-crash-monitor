@@ -49,7 +49,7 @@ jib {
         image = "openjdk:17-jdk-slim"
     }
     to {
-        image = "hebirura682:zomboid-crash-monitor"
+        image = "hebirura682/zomboid-crash-monitor"
         tags = setOf("latest", "$version")
         auth {
             username = System.getenv("DOCKER_USERNAME")
