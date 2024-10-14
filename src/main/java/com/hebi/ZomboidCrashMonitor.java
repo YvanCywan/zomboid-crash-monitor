@@ -44,7 +44,7 @@ public class ZomboidCrashMonitor {
 
         List<OSProcess> processes = os.getProcesses();
         boolean isRunning = processes.stream()
-                .anyMatch(osProcess -> osProcess.getName().contains(serviceName));
+                .anyMatch(osProcess -> osProcess.getName().contains("PZomboid6"));
 
         System.out.println("Processes: " + processes.stream().map(OSProcess::getName).toList());
 
